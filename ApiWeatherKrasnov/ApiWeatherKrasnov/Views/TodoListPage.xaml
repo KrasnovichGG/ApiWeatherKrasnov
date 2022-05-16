@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ApiWeatherKrasnov.Views.TodoListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <StackLayout>
+        <SearchBar
+            x:Name="searchbarcity"
+            Placeholder="Введите город"
+            SearchButtonPressed="SearchBar_SearchButtonPressed" />
+        <Label FontSize="20" Text="Информация о городе" />
+        <Label FontSize="15" Text="{Binding temp}" />
+        <Label FontSize="15" Text="{Binding feels_like}" />
+        <Label FontSize="15" Text="{Binding wind_speed}" />
+        <Label FontSize="15" Text="{Binding humidity}" />
+        <Label FontSize="15" Text="{Binding pressure}" />
+    </StackLayout>
+
+
+
+
+</ContentPage>
