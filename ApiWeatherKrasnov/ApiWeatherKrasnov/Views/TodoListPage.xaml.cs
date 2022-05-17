@@ -23,6 +23,12 @@ namespace ApiWeatherKrasnov.Views
             {
                 TodoItemModel a = await App.TodoManager.GetTodoItemModels(searchbarcity.Text);
                 BindingContext = a.main;
+                Temp.Text += "°C - градусов цельсия";
+                Fells.Text += "°C - ощущение";
+                Wind.Text += "м.с ветер!";
+                Hum.Text += "г/м³ - Влажность";
+                Pressure.Text += "атм Давление";
+
             }
             catch (Exception ex)
             {

@@ -9,11 +9,26 @@
             Placeholder="Введите город"
             SearchButtonPressed="SearchBar_SearchButtonPressed" />
         <Label FontSize="20" Text="Информация о городе" />
-        <Label FontSize="15" Text="{Binding temp}" />
-        <Label FontSize="15" Text="{Binding feels_like}" />
-        <Label FontSize="15" Text="{Binding wind_speed}" />
-        <Label FontSize="15" Text="{Binding humidity}" />
-        <Label FontSize="15" Text="{Binding pressure}" />
+        <Label
+            x:Name="Temp"
+            FontSize="15"
+            Text="{Binding temp}" />
+        <Label
+            x:Name="Fells"
+            FontSize="15"
+            Text="{Binding feels_like}" />
+        <Label
+            x:Name="Wind"
+            FontSize="15"
+            Text="{Binding wind}" />
+        <Label
+            x:Name="Hum"
+            FontSize="15"
+            Text="{Binding humidity}" />
+        <Label
+            x:Name="Pressure"
+            FontSize="15"
+            Text="{Binding pressure}" />
     </StackLayout>
 
 
