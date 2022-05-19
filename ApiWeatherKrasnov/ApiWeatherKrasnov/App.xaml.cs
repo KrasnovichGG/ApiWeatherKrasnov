@@ -12,9 +12,9 @@ namespace ApiWeatherKrasnov
         public App()
         {
             InitializeComponent();
-            MainPage = new MainPage();
+            
             TodoManager = new TodoManager(new RestService());
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new TodoListPage();
         }
 
         protected override void OnStart()
