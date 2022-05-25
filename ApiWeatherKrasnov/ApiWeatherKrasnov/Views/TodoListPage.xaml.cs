@@ -15,14 +15,15 @@ namespace ApiWeatherKrasnov.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TodoListPage : ContentPage
     {
+        TodoItemModel a;
         CancellationTokenSource stc;
         Pin krasnovichPin = new Pin();
         public TodoListPage()
         {
             InitializeComponent();
-            var res = GetLocation();
+            //var res = GetLocation();
             krasnovichPin.Label = "Техникум Связи";
-            krasnovichPin.Address = "KTITS";
+            krasnovichPin.Address = "Город";
             krasnovichPin.Position = new Position(55.8016314,49.175043);
             MyMap.Pins.Add(krasnovichPin);
         }
@@ -33,6 +34,8 @@ namespace ApiWeatherKrasnov.Views
             var location = await Geolocation.GetLocationAsync(request,stc.Token);
             if (location != null)
             {
+                krasnovichPin.Label = a.name;
+                krasnovichPin.Position = new Position(a.coord.lat,a.coord.lon);
                 MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(location.Latitude, location.Longitude), new Distance(100d)));
             }
             return location;
@@ -51,7 +54,7 @@ namespace ApiWeatherKrasnov.Views
         {
             try
             {
-                TodoItemModel a = await App.TodoManager.GetTodoItemModels(searchbarcity.Text);
+                a = await App.TodoManager.GetTodoItemModels(searchbarcity.Text);
                 BindingContext = a.main;
                 sashaCloud.Text = $"{a.weather[0].description} на улице";
                 Temp.Text = $"{a.main.temp}°C - градусов цельсия";
@@ -59,7 +62,8 @@ namespace ApiWeatherKrasnov.Views
                 Wind.Text = $"{a.wind.speed} - м.с ветер!";
                 Hum.Text = $"{a.main.humidity} - г/м³Влажность";
                 Pressure.Text = $"{a.main.pressure} - атм Давление";
-
+                imagecloud.Source = ImageSource.FromUri(new Uri($"http://openweathermap.org/img/wn/{a.weather[0].icon}.png"));
+                await GetLocation();
             }
             catch (Exception ex)
             {
