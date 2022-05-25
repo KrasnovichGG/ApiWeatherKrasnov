@@ -53,11 +53,12 @@ namespace ApiWeatherKrasnov.Views
             {
                 TodoItemModel a = await App.TodoManager.GetTodoItemModels(searchbarcity.Text);
                 BindingContext = a.main;
-                Temp.Text += "°C - градусов цельсия";
-                Fells.Text += "°C - ощущение";
-                Wind.Text += $"{a.wind.speed} - м.с ветер!";
-                Hum.Text += " - г/м³Влажность";
-                Pressure.Text += " - атм Давление";
+                sashaCloud.Text = $"{a.weather[0].description} на улице";
+                Temp.Text = $"{a.main.temp}°C - градусов цельсия";
+                Fells.Text = $"{a.main.feels_like}°C - ощущение";
+                Wind.Text = $"{a.wind.speed} - м.с ветер!";
+                Hum.Text = $"{a.main.humidity} - г/м³Влажность";
+                Pressure.Text = $"{a.main.pressure} - атм Давление";
 
             }
             catch (Exception ex)

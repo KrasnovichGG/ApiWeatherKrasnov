@@ -12,6 +12,10 @@
                 SearchButtonPressed="SearchBar_SearchButtonPressed" />
             <Label FontSize="20" Text="Информация о городе" />
             <Label
+                x:Name="sashaCloud"
+                FontSize="15"
+                Text="{Binding description}" />
+            <Label
                 x:Name="Temp"
                 FontSize="15"
                 Text="{Binding temp}" />
@@ -33,7 +37,10 @@
                 Text="{Binding pressure}" />
         </StackLayout>
         <StackLayout>
-            <maps:Map x:Name="MyMap" IsShowingUser="True" HeightRequest="400" />
+            <maps:Map
+                x:Name="MyMap"
+                HeightRequest="400"
+                IsShowingUser="True" />
         </StackLayout>
     </StackLayout>
 
